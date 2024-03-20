@@ -10,12 +10,11 @@ use Illuminate\Support\Collection;
  */
 class RecordFactory extends Factory
 {
-    protected Collection $keyValues;
+    protected static Collection $keyValues;
 
-    public function __construct()
+    protected function init()
     {
-        parent::__construct();
-        $this->keyValues = collect(array_fill(0, 10, null))->map(fn () => [fake()->safeColorName(), fake()->safeColorName()]);
+        static::$keyValues = collect(array_fill(0, 10, null))->map(fn () => [fake()->safeColorName(), fake()->safeColorName()]);
     }
 
     /**
@@ -33,9 +32,13 @@ class RecordFactory extends Factory
 
     protected function generateData(): object
     {
+        if (!isset($this->keyValues)) {
+            $this->init();
+        }
+
         $data = [];
 
-        foreach ($this->keyValues->shuffle()->take(rand(1, 10)) as [$key, $value]) {
+        foreach (static::$keyValues->shuffle()->take(rand(1, 10)) as [$key, $value]) {
             $data[$key] = $value;
         }
 

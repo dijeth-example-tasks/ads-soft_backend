@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FindRequest;
 use App\Models\Record;
-use Illuminate\Http\Request;
 
 class RecordController extends Controller
 {
@@ -13,7 +12,7 @@ class RecordController extends Controller
      */
     public function show(Record $record)
     {
-        //
+        return response()->json($record);
     }
 
     /**
