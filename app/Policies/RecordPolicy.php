@@ -13,7 +13,7 @@ class RecordPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -29,7 +29,7 @@ class RecordPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -37,7 +37,7 @@ class RecordPolicy
      */
     public function update(User $user, Record $record): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -45,7 +45,7 @@ class RecordPolicy
      */
     public function delete(User $user, Record $record): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -53,7 +53,7 @@ class RecordPolicy
      */
     public function restore(User $user, Record $record): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -61,6 +61,6 @@ class RecordPolicy
      */
     public function forceDelete(User $user, Record $record): bool
     {
-        return true;
+        return false;
     }
 }

@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        info($user->createToken('token')->plainTextToken);
+        info('Токен: ' . substr($user->createToken('token')->plainTextToken, 2));
 
         Record::factory()
             ->count(10)
